@@ -2,20 +2,23 @@
 
 /** Checks sorted array for two numbers that average to targetAvg
  * takes in a sorted array of numbers and a targetAvg
- * Returns boolean
- */
-function averagePair() {}
+ * Returns boolean */
 
-/**averagePair»
-This should take a sorted array of numbers, nums, and a numeric targetAvg.
-Determine if there is a pair of numbers in nums where the average of the pair equals the target average.
-There may be more than one pair that matches the average target.
+function averagePair(nums, targetAvg) {
+  if (nums.length < 2) false;
 
-Constraints: Time complexity: O(n)
+  let left = 0;
+  let right = nums.length - 1;
 
-averagePair([1, 2, 3], 2.5);         // true
-averagePair([3, 3, 6, 12, 19], 8);   // false
-averagePair([1, 2, 3], 2);           // true
-averagePair([], 4);                  // false
- */
-rparky5;
+  while (left < right) {
+    let currAvg = (nums[left] + nums[right]) / 2;
+    if (currAvg === targetAvg) {
+      return true;
+    } else if (currAvg > targetAvg) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+  return false;
+}
